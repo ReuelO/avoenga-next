@@ -11,8 +11,10 @@ export default function Cart({ cartItems = [], removeFromCart }) {
     : 0
 
   return (
-    <aside className='w-80 bg-gray-100 p-4 fixed right-0 top-0 h-full shadow-lg'>
-      <h2 className='text-xl font-bold text-green-700'>Cart</h2>
+    <div className='p-4 w-full h-full'>
+      <h2 className='text-xl font-bold text-green-700 dark:text-green-300'>
+        Cart
+      </h2>
       {cartItems.length === 0 ? (
         <p className='text-gray-500 mt-4'>No items in cart.</p>
       ) : (
@@ -62,6 +64,6 @@ export default function Cart({ cartItems = [], removeFromCart }) {
         cartItems={cartItems}
         totalPrice={totalPrice}
       />
-    </aside>
+    </div>
   )
 }

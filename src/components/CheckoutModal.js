@@ -1,7 +1,8 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { FaCreditCard, FaPaypal, FaUniversity } from 'react-icons/fa'
+import Input from './Input'
 
 export default function CheckoutModal({
   isOpen,
@@ -14,74 +15,102 @@ export default function CheckoutModal({
   const [phone, setPhone] = useState('')
   const [address, setAddress] = useState('')
   const [paymentMethod, setPaymentMethod] = useState('')
+  const [errors, setErrors] = useState({})
 
-  const handlePlaceOrder = () => {
-    // Handle order placement logic
-    console.log('Order placed:', {
-      name,
-      email,
-      phone,
-      address,
-      paymentMethod,
-      cartItems,
-      totalPrice,
-    })
-    closeModal()
+  const modalRef = useRef(null)
+
+  const validateForm = () => {
+    const newErrors = {}
+    if (!name) newErrors.name = 'Name is required'
+    if (!email) {
+      newErrors.email = 'Email is required'
+    } else if (!/\S+@\S+\.\S+/.test(email)) {
+      newErrors.email = 'Email is invalid'
+    }
+    if (!phone) newErrors.phone = 'Phone number is required'
+    if (!address) newErrors.address = 'Address is required'
+    if (!paymentMethod) newErrors.paymentMethod = 'Payment method is required'
+    return newErrors
   }
+
+  const handlePlaceOrder = (e) => {
+    e.preventDefault()
+    const newErrors = validateForm()
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors)
+    } else {
+      setErrors({})
+      // Handle order placement logic
+      console.log('Order placed:', {
+        name,
+        email,
+        phone,
+        address,
+        paymentMethod,
+        cartItems,
+        totalPrice,
+      })
+      closeModal()
+    }
+  }
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (modalRef.current && !modalRef.current.contains(event.target)) {
+        closeModal()
+      }
+    }
+    if (isOpen) {
+      document.addEventListener('mousedown', handleClickOutside)
+    } else {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [isOpen, closeModal])
 
   if (!isOpen) return null
 
   return (
-    <div className='fixed inset-0 bg-gray-800 bg-opacity-75 backdrop-blur-sm flex items-center justify-center z-50'>
-      <div className='bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg w-full max-w-lg mx-4 max-h-75 overflow-y-auto'>
+    <div className='fixed inset-0 bg-gray-800 bg-opacity-75 backdrop-blur-sm flex items-center justify-center'>
+      <div
+        ref={modalRef}
+        className='bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg w-full max-w-lg mx-4 max-h-full overflow-y-auto'
+        style={{ width: '80%' }} // Make the container smaller by 20%
+      >
         <h2 className='text-2xl font-bold text-gray-800 dark:text-gray-200 mb-4'>
           Checkout
         </h2>
-        <form>
-          <div className='mb-4'>
-            <label className='block text-gray-700 dark:text-gray-300 mb-2'>
-              Name
-            </label>
-            <input
-              type='text'
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              className='w-full p-2 border border-gray-300 dark:border-gray-600 rounded bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-200'
-            />
-          </div>
-          <div className='mb-4'>
-            <label className='block text-gray-700 dark:text-gray-300 mb-2'>
-              Email
-            </label>
-            <input
-              type='email'
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className='w-full p-2 border border-gray-300 dark:border-gray-600 rounded bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-200'
-            />
-          </div>
-          <div className='mb-4'>
-            <label className='block text-gray-700 dark:text-gray-300 mb-2'>
-              Phone
-            </label>
-            <input
-              type='tel'
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
-              className='w-full p-2 border border-gray-300 dark:border-gray-600 rounded bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-200'
-            />
-          </div>
-          <div className='mb-4'>
-            <label className='block text-gray-700 dark:text-gray-300 mb-2'>
-              Address
-            </label>
-            <input
-              type='text'
-              value={address}
-              onChange={(e) => setAddress(e.target.value)}
-              className='w-full p-2 border border-gray-300 dark:border-gray-600 rounded bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-200'
-            />
-          </div>
+        <form onSubmit={handlePlaceOrder}>
+          <Input
+            type='text'
+            placeholder='Your Name'
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            error={errors.name}
+          />
+          <Input
+            type='email'
+            placeholder='Your Email'
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            error={errors.email}
+          />
+          <Input
+            type='tel'
+            placeholder='Your Phone Number'
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
+            error={errors.phone}
+          />
+          <Input
+            type='text'
+            placeholder='Your Address'
+            value={address}
+            onChange={(e) => setAddress(e.target.value)}
+            error={errors.address}
+          />
           <div className='mb-4'>
             <label className='block text-gray-700 dark:text-gray-300 mb-2'>
               Payment Method
@@ -133,9 +162,8 @@ export default function CheckoutModal({
               Total: ${totalPrice.toFixed(2)}
             </h3>
             <button
-              type='button'
+              type='submit'
               className='mt-4 bg-green-600 text-white w-full py-2 rounded hover:bg-green-700'
-              onClick={handlePlaceOrder}
             >
               Place Order
             </button>

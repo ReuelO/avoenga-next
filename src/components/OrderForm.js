@@ -1,44 +1,17 @@
 'use client'
 
 import { useState } from 'react'
-import { FaCreditCard, FaPaypal, FaUniversity } from 'react-icons/fa'
 import config from '../../config'
-
-const Input = ({ type, placeholder, value, onChange, error }) => {
-  return (
-    <div className='mb-4'>
-      <input
-        type={type}
-        placeholder={placeholder}
-        value={value}
-        onChange={onChange}
-        className='w-full p-2 border border-gray-300 dark:border-gray-600 rounded bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-200'
-      />
-      {error && <p className='text-red-500 text-sm py-2'>{error}</p>}
-    </div>
-  )
-}
+import Cart from './Cart'
+import ProductCard from './ProductCard'
 
 export default function OrderForm() {
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
-  const [phone, setPhone] = useState('')
-  const [address, setAddress] = useState('')
   const [products, setProducts] = useState([{ product: '', quantity: 1 }])
-  const [paymentMethod, setPaymentMethod] = useState('')
+  const [cartItems, setCartItems] = useState([])
   const [errors, setErrors] = useState({})
 
   const validateForm = () => {
     const newErrors = {}
-    if (!name) newErrors.name = 'Name is required'
-    if (!email) {
-      newErrors.email = 'Email is required'
-    } else if (!/\S+@\S+\.\S+/.test(email)) {
-      newErrors.email = 'Email is invalid'
-    }
-    if (!phone) newErrors.phone = 'Phone number is required'
-    if (!address) newErrors.address = 'Address is required'
-    if (!paymentMethod) newErrors.paymentMethod = 'Payment method is required'
     products.forEach((item, index) => {
       if (!item.product) {
         newErrors[`product${index}`] = 'Product is required'
@@ -57,15 +30,16 @@ export default function OrderForm() {
       setErrors(newErrors)
     } else {
       setErrors({})
-      // Handle form submission
-      console.log('Form submitted:', {
-        name,
-        email,
-        phone,
-        address,
-        products,
-        paymentMethod,
+      products.forEach((item) => {
+        const selectedProduct = config.products.find(
+          (p) => p.id === parseInt(item.product)
+        )
+        if (selectedProduct) {
+          addToCart(selectedProduct, item.quantity)
+        }
       })
+      // Handle form submission
+      console.log('Form submitted:', { products })
     }
   }
 
@@ -82,6 +56,23 @@ export default function OrderForm() {
   const removeProduct = (index) => {
     const newProducts = products.filter((_, i) => i !== index)
     setProducts(newProducts)
+  }
+
+  const addToCart = (product, quantity) => {
+    setCartItems((prevItems) => {
+      const existingItem = prevItems.find(
+        (item) => item.product.id === product.id
+      )
+      if (existingItem) {
+        return prevItems.map((item) =>
+          item.product.id === product.id
+            ? { ...item, quantity: item.quantity + quantity }
+            : item
+        )
+      } else {
+        return [...prevItems, { product, quantity }]
+      }
+    })
   }
 
   const totalCost = products.reduce((total, item) => {
@@ -103,84 +94,24 @@ export default function OrderForm() {
         Experience the benefits of pure and organic avocado oil. Place your
         order now!
       </p>
-      <div className='max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8'>
+      <div className='max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8'>
         <form
           onSubmit={handleSubmit}
           className='bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg'
         >
           <h3 className='text-2xl font-bold text-gray-800 dark:text-gray-200 mb-4'>
-            Order Details
+            Available Products
           </h3>
-          <Input
-            type='text'
-            placeholder='Your Name'
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            error={errors.name}
-          />
-          <Input
-            type='email'
-            placeholder='Your Email'
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            error={errors.email}
-          />
-          <Input
-            type='tel'
-            placeholder='Your Phone Number'
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
-            error={errors.phone}
-          />
-          <Input
-            type='text'
-            placeholder='Your Address'
-            value={address}
-            onChange={(e) => setAddress(e.target.value)}
-            error={errors.address}
-          />
           {products.map((item, index) => (
-            <div key={index} className='mb-4'>
-              <select
-                value={item.product}
-                onChange={(e) =>
-                  handleProductChange(index, 'product', e.target.value)
-                }
-                className='w-full p-2 border border-gray-300 dark:border-gray-600 rounded bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-200'
-              >
-                <option value='' disabled>
-                  Select A Product
-                </option>
-                {config.products.map((product) => (
-                  <option key={product.id} value={product.id}>
-                    {product.name}
-                  </option>
-                ))}
-              </select>
-              {errors[`product${index}`] && (
-                <p className='text-red-500 text-sm py-2'>
-                  {errors[`product${index}`]}
-                </p>
-              )}
-              <Input
-                type='number'
-                placeholder='Quantity'
-                value={item.quantity}
-                onChange={(e) =>
-                  handleProductChange(index, 'quantity', e.target.value)
-                }
-                error={errors[`quantity${index}`]}
-              />
-              {products.length > 1 && (
-                <button
-                  type='button'
-                  onClick={() => removeProduct(index)}
-                  className='text-red-500'
-                >
-                  Remove
-                </button>
-              )}
-            </div>
+            <ProductCard
+              key={index}
+              index={index}
+              product={item.product}
+              quantity={item.quantity}
+              handleProductChange={handleProductChange}
+              removeProduct={removeProduct}
+              errors={errors}
+            />
           ))}
           <button
             type='button'
@@ -200,55 +131,12 @@ export default function OrderForm() {
           </button>
         </form>
         <div className='bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg'>
-          <h3 className='text-2xl font-bold text-gray-800 dark:text-gray-200 mb-4'>
-            Delivery Information
-          </h3>
-          <p className='text-gray-700 dark:text-gray-300 mb-4'>
-            We offer fast and reliable delivery to your doorstep. Please ensure
-            your address is correct when placing your order.
-          </p>
-          <h3 className='text-2xl font-bold text-gray-800 dark:text-gray-200 mb-4'>
-            Payment Options
-          </h3>
-          <div className='flex justify-around mb-4'>
-            <div className='flex flex-col items-center'>
-              <FaCreditCard className='text-4xl text-gray-700 dark:text-gray-300' />
-              <input
-                type='radio'
-                name='paymentMethod'
-                value='Credit/Debit Card'
-                onChange={(e) => setPaymentMethod(e.target.value)}
-                className='mt-2'
-              />
-              <label className='text-gray-700 dark:text-gray-300'>
-                Credit/Debit Card
-              </label>
-            </div>
-            <div className='flex flex-col items-center'>
-              <FaPaypal className='text-4xl text-gray-700 dark:text-gray-300' />
-              <input
-                type='radio'
-                name='paymentMethod'
-                value='PayPal'
-                onChange={(e) => setPaymentMethod(e.target.value)}
-                className='mt-2'
-              />
-              <label className='text-gray-700 dark:text-gray-300'>PayPal</label>
-            </div>
-            <div className='flex flex-col items-center'>
-              <FaUniversity className='text-4xl text-gray-700 dark:text-gray-300' />
-              <input
-                type='radio'
-                name='paymentMethod'
-                value='Bank Transfer'
-                onChange={(e) => setPaymentMethod(e.target.value)}
-                className='mt-2'
-              />
-              <label className='text-gray-700 dark:text-gray-300'>
-                Bank Transfer
-              </label>
-            </div>
-          </div>
+          <Cart
+            cartItems={cartItems}
+            removeFromCart={(index) =>
+              setCartItems(cartItems.filter((_, i) => i !== index))
+            }
+          />
         </div>
       </div>
     </section>

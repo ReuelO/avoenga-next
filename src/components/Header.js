@@ -27,7 +27,7 @@ export default function Header() {
   }
 
   return (
-    <header className='bg-green-600 dark:bg-gray-800 text-white p-4 shadow-md fixed w-full z-10'>
+    <header className='bg-green-600 dark:bg-gray-800 text-white p-4 shadow-md fixed w-full z-50'>
       <div className='max-w-6xl mx-auto flex justify-between items-center'>
         <Image
           src={config.logo}

@@ -1,3 +1,17 @@
+import {
+  FaAppleAlt,
+  FaConciergeBell,
+  FaFire,
+  FaHeart,
+  FaLeaf,
+  FaShieldAlt,
+  FaSpa,
+  FaStethoscope,
+  FaTable,
+  FaTint,
+  FaUtensils,
+} from 'react-icons/fa'
+
 const config = {
   siteName: 'Avoenga Lavish',
   logo: '/images/logo.png',
@@ -25,6 +39,7 @@ const config = {
     options: ['light', 'dark'],
   },
   navigationLinks: [
+    { name: 'About', href: '#about' },
     { name: 'Products', href: '#products' },
     { name: 'Benefits', href: '#benefits' },
     { name: 'Order', href: '#order' },
@@ -54,20 +69,74 @@ const config = {
     },
   ],
   benefits: [
+    // Product Features
     {
       id: 1,
-      title: 'Heart Health',
-      description: 'Rich in monounsaturated fats, helps lower cholesterol.',
+      title: '100% Pure & Cold-Pressed',
+      description: 'Retains all the natural nutrients and antioxidants.',
+      icon: FaLeaf,
     },
     {
       id: 2,
-      title: 'Skin & Hair',
-      description: 'Deeply moisturizes and nourishes skin & scalp.',
+      title: 'Rich in Healthy Fats',
+      description: 'Packed with heart-friendly monounsaturated fats.',
+      icon: FaHeart,
     },
     {
       id: 3,
       title: 'High Smoke Point',
-      description: 'Great for high-heat cooking without breaking down.',
+      description: 'Perfect for frying, roasting, and sautéing (up to 271°C).',
+      icon: FaFire,
+    },
+    {
+      id: 4,
+      title: 'Versatile & Delicious',
+      description: 'Great for cooking, salads, and even skincare.',
+      icon: FaUtensils,
+    },
+    // Usage
+    {
+      id: 5,
+      title: 'Cooking',
+      description: 'Use it for frying, grilling, or baking.',
+      icon: FaConciergeBell,
+    },
+    {
+      id: 6,
+      title: 'Salads & Dressings',
+      description: 'A perfect drizzle for fresh salads.',
+      icon: FaTable,
+    },
+    {
+      id: 7,
+      title: 'Skincare',
+      description: 'Apply directly for deep skin hydration.',
+      icon: FaTint,
+    },
+    // Health Benefits
+    {
+      id: 8,
+      title: 'Supports Heart Health',
+      description: 'Lowers bad cholesterol and boosts good cholesterol.',
+      icon: FaStethoscope,
+    },
+    {
+      id: 9,
+      title: 'Boosts Immunity',
+      description: 'High in Vitamin E and antioxidants.',
+      icon: FaShieldAlt,
+    },
+    {
+      id: 10,
+      title: 'Aids Digestion',
+      description: 'Gentle on the stomach, promoting gut health.',
+      icon: FaAppleAlt,
+    },
+    {
+      id: 11,
+      title: 'Enhances Skin & Hair',
+      description: 'Natural nourishment for glowing skin and strong hair.',
+      icon: FaSpa,
     },
   ],
 }

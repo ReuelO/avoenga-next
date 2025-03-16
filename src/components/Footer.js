@@ -18,7 +18,7 @@ const socialMediaIcons = {
 
 export default function Footer() {
   return (
-    <footer className='bg-green-600 dark:bg-gray-800 text-white text-center py-6 mt-10'>
+    <footer className='bg-green-600 dark:bg-gray-800 text-white text-center p-10'>
       <div className='max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0'>
         <div className='flex flex-col space-y-2 items-start'>
           <p className='h3 text-bold'>Contact Us</p>
