@@ -1,10 +1,11 @@
-import About from '@/components/About'
-import Benefits from '@/components/Benefits'
-import Footer from '@/components/Footer'
-import Header from '@/components/Header'
-import Hero from '@/components/Hero'
-import { default as OrderForm } from '@/components/OrderForm'
-import Products from '@/components/Products'
+import Footer from '@/components/molecules/Footer'
+import Header from '@/components/molecules/Header'
+import Hero from '@/components/molecules/Hero'
+
+import About from '@/components/organisms/About'
+import Benefits from '@/components/organisms/Benefits'
+import Contact from '@/components/organisms/Contact'
+import Products from '@/components/organisms/Products'
 
 export default function Home() {
   return (
@@ -12,9 +13,9 @@ export default function Home() {
       <Header />
       <Hero />
       <About />
-      <Products />
       <Benefits />
-      <OrderForm />
+      <Products />
+      <Contact />
       <Footer />
     </div>
   )

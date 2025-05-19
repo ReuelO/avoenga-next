@@ -12,11 +12,11 @@ export default function Cart({ cartItems = [], removeFromCart }) {
 
   return (
     <div className='p-4 w-full h-full'>
-      <h2 className='text-xl font-bold text-green-700 dark:text-green-300'>
+      <h2 className='text-xl font-bold text-green-700 dark:text-green-100'>
         Cart
       </h2>
       {cartItems.length === 0 ? (
-        <p className='text-gray-500 mt-4'>No items in cart.</p>
+        <p className='text-green-500 mt-4'>No items in cart.</p>
       ) : (
         <ul className='mt-4'>
           {cartItems.map((item, index) => (
@@ -26,11 +26,11 @@ export default function Cart({ cartItems = [], removeFromCart }) {
             >
               <div>
                 <p className='font-semibold'>{item.name}</p>
-                <p className='text-sm text-gray-600'>
+                <p className='text-sm text-green-600'>
                   Qty: {item.quantity} × ${item.price}
                 </p>
               </div>
-              <p className='font-bold text-gray-800'>
+              <p className='font-bold text-green-800'>
                 ${item.price * item.quantity}
               </p>
               <button

@@ -39,10 +39,10 @@ const config = {
     options: ['light', 'dark'],
   },
   navigationLinks: [
-    { name: 'About', href: '#about' },
-    { name: 'Products', href: '#products' },
-    { name: 'Benefits', href: '#benefits' },
-    { name: 'Order', href: '#order' },
+    { name: 'Who We Are', href: '#about' },
+    { name: 'What We Sell', href: '#products' },
+    { name: 'Why Choose Us', href: '#benefits' },
+    { name: 'Make An Order', href: '#order' },
     { name: 'Contact', href: '#contact' },
   ],
   products: [

@@ -6,7 +6,7 @@ export default function Input({ type, placeholder, value, onChange, error }) {
         placeholder={placeholder}
         value={value}
         onChange={onChange}
-        className='w-full p-2 border border-gray-300 dark:border-gray-600 rounded bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-200'
+        className='w-full p-2 border border-gray-300 dark:border-gray-600 rounded bg-gray-50 dark:bg-green-700 text-green-900 dark:text-green-100'
       />
       {error && <p className='text-red-500 text-sm py-2'>{error}</p>}
     </div>

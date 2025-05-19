@@ -1,8 +1,8 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { FaCreditCard, FaPaypal, FaUniversity } from 'react-icons/fa'
-import Input from './Input'
+import Input from '../atoms/Input'
 
 export default function CheckoutModal({
   isOpen,
@@ -73,13 +73,13 @@ export default function CheckoutModal({
   if (!isOpen) return null
 
   return (
-    <div className='fixed inset-0 bg-gray-800 bg-opacity-75 backdrop-blur-sm flex items-center justify-center'>
+    <div className='fixed inset-0 bg-green-800 bg-opacity-75 backdrop-blur-sm flex items-center justify-center'>
       <div
         ref={modalRef}
-        className='bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg w-full max-w-lg mx-4 max-h-full overflow-y-auto'
+        className='bg-white dark:bg-green-800 p-6 rounded-lg shadow-lg w-full max-w-lg mx-4 max-h-full overflow-y-auto'
         style={{ width: '80%' }} // Make the container smaller by 20%
       >
-        <h2 className='text-2xl font-bold text-gray-800 dark:text-gray-200 mb-4'>
+        <h2 className='text-2xl font-bold text-green-800 dark:text-green-100 mb-4'>
           Checkout
         </h2>
         <form onSubmit={handlePlaceOrder}>
@@ -112,12 +112,12 @@ export default function CheckoutModal({
             error={errors.address}
           />
           <div className='mb-4'>
-            <label className='block text-gray-700 dark:text-gray-300 mb-2'>
+            <label className='block text-green-700 dark:text-green-100 mb-2'>
               Payment Method
             </label>
             <div className='flex justify-around'>
               <div className='flex flex-col items-center'>
-                <FaCreditCard className='text-4xl text-gray-700 dark:text-gray-300' />
+                <FaCreditCard className='text-4xl text-green-700 dark:text-green-100' />
                 <input
                   type='radio'
                   name='paymentMethod'
@@ -125,12 +125,12 @@ export default function CheckoutModal({
                   onChange={(e) => setPaymentMethod(e.target.value)}
                   className='mt-2'
                 />
-                <label className='text-gray-700 dark:text-gray-300'>
+                <label className='text-green-700 dark:text-green-100'>
                   Credit/Debit Card
                 </label>
               </div>
               <div className='flex flex-col items-center'>
-                <FaPaypal className='text-4xl text-gray-700 dark:text-gray-300' />
+                <FaPaypal className='text-4xl text-green-700 dark:text-green-100' />
                 <input
                   type='radio'
                   name='paymentMethod'
@@ -138,12 +138,12 @@ export default function CheckoutModal({
                   onChange={(e) => setPaymentMethod(e.target.value)}
                   className='mt-2'
                 />
-                <label className='text-gray-700 dark:text-gray-300'>
+                <label className='text-green-700 dark:text-green-100'>
                   PayPal
                 </label>
               </div>
               <div className='flex flex-col items-center'>
-                <FaUniversity className='text-4xl text-gray-700 dark:text-gray-300' />
+                <FaUniversity className='text-4xl text-green-700 dark:text-green-100' />
                 <input
                   type='radio'
                   name='paymentMethod'
@@ -151,7 +151,7 @@ export default function CheckoutModal({
                   onChange={(e) => setPaymentMethod(e.target.value)}
                   className='mt-2'
                 />
-                <label className='text-gray-700 dark:text-gray-300'>
+                <label className='text-green-700 dark:text-green-100'>
                   Bank Transfer
                 </label>
               </div>
