@@ -1,7 +1,7 @@
 export default function About() {
   return (
     <section id='about' className='py-12 bg-white dark:bg-green-900'>
-      <div className='max-w-5xl mx-auto mb-12'>
+      <div className='max-w-6xl mx-auto mb-12'>
         <h2 className='text-4xl font-bold text-green-700 dark:text-green-100 mb-4'>
           From Farm to Table: <br />
           The AVOENGA Lavish Story

@@ -23,18 +23,20 @@ export default function Benefits() {
       id='benefits'
       className='py-12 bg-white dark:bg-green-800 text-center'
     >
-      <h2 className='text-4xl font-bold text-green-700 dark:text-green-100 mb-8'>
-        Benefits of AVOENGA Avocado Oil
-      </h2>
-      <div className='mt-6 mx-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8'>
-        {benefits.map((benefit) => (
-          <BenefitCard
-            key={benefit.id}
-            title={benefit.title}
-            description={benefit.description}
-            Icon={benefit.icon}
-          />
-        ))}
+      <div className='max-w-6xl mx-auto mb-12'>
+        <h2 className='text-4xl font-bold text-green-700 dark:text-green-100 mb-8'>
+          Benefits of AVOENGA Avocado Oil
+        </h2>
+        <div className='mt-6 mx-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8'>
+          {benefits.map((benefit) => (
+            <BenefitCard
+              key={benefit.id}
+              title={benefit.title}
+              description={benefit.description}
+              Icon={benefit.icon}
+            />
+          ))}
+        </div>
       </div>
     </section>
   )
