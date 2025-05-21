@@ -40,10 +40,10 @@ const config = {
   },
   navigationLinks: [
     { name: 'Who We Are', href: '#about' },
-    { name: 'What We Sell', href: '#products' },
     { name: 'Why Choose Us', href: '#benefits' },
-    { name: 'Make An Order', href: '#order' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'What We Sell', href: '#products' },
+    { name: 'Order Now', href: '#order' },
+    { name: 'Reach Out', href: '#contact' },
   ],
   products: [
     {

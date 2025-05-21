@@ -21,11 +21,14 @@ export default function Benefits() {
   return (
     <section
       id='benefits'
-      className='py-12 bg-white dark:bg-green-800 text-center'
+      className='py-12 bg-white dark:bg-green-800 text-center p-5'
     >
-      <div className='max-w-6xl mx-auto mb-12'>
-        <h2 className='text-4xl font-bold text-green-700 dark:text-green-100 mb-8'>
-          Benefits of AVOENGA Avocado Oil
+      <div className='max-w-6xl mx-auto py-12'>
+        <h1 className='text-lg font-bold text-green-700 dark:text-green-100 mb-4'>
+          Why Choose Us
+        </h1>
+        <h2 className='text-4xl font-black text-green-700 dark:text-green-100 mb-6'>
+          The Benefits of AVOENGA Avocado Oil
         </h2>
         <div className='mt-6 mx-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8'>
           {benefits.map((benefit) => (

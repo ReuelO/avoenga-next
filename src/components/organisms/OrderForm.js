@@ -13,7 +13,6 @@ export default function OrderForm({ initialProduct }) {
   useEffect(() => {
     if (initialProduct) {
       setCartItems((prev) => {
-        // Avoid duplicates if already in cart
         if (prev.some((item) => item.product.id === initialProduct.id))
           return prev
         return [...prev, { product: initialProduct, quantity: 1 }]
@@ -83,6 +82,15 @@ export default function OrderForm({ initialProduct }) {
     })
   }
 
+  // Add this function to update quantity in Cart
+  const updateQuantity = (index, newQuantity) => {
+    setCartItems((prevItems) =>
+      prevItems.map((item, i) =>
+        i === index ? { ...item, quantity: newQuantity } : item
+      )
+    )
+  }
+
   const totalCost = products.reduce((total, item) => {
     const selectedProduct = config.products.find(
       (p) => p.id === parseInt(item.product)
@@ -98,23 +106,23 @@ export default function OrderForm({ initialProduct }) {
   return (
     <section
       id='order'
-      className='py-12 bg-green-100 dark:bg-green-700 text-center'
+      className='py-12 bg-green-100 dark:bg-green-700 text-center p-5'
     >
-      <div className='max-w-6xl mx-auto mb-12'>
-        <h2 className='text-3xl font-bold text-green-700 dark:text-green-100'>
+      <div className='max-w-4xl mx-auto py-12'>
+        <h1 className='text-lg font-bold text-green-700 dark:text-green-100 mb-4'>
+          Order Now
+        </h1>
+        <h2 className='text-4xl font-black text-green-700 dark:text-green-100 mb-6'>
           Place Your Order
         </h2>
-        <p className='text-lg text-green-700 dark:text-green-100 mb-6'>
-          Experience the benefits of pure and organic avocado oil. <br />
-          Place your order now!
-        </p>
 
-        <div className='bg-white dark:bg-green-900 p-6 rounded-lg shadow-lg'>
+        <div className='bg-white dark:bg-green-900 p-6 rounded-lg shadow-lg mx-6'>
           <Cart
             cartItems={cartItems}
             removeFromCart={(index) =>
               setCartItems(cartItems.filter((_, i) => i !== index))
             }
+            updateQuantity={updateQuantity}
           />
         </div>
       </div>

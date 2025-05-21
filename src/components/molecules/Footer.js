@@ -12,7 +12,7 @@ function SocialMediaLink({ href, ariaLabel, Icon, color }) {
       target='_blank'
       rel='noopener noreferrer'
     >
-      <Icon className={`h-8 w-8 ${color} drop-shadow`} />
+      <Icon className={`h-8 w-8 KES{color} drop-shadow`} />
     </Link>
   )
 }
@@ -32,7 +32,7 @@ export default function Footer() {
           <span>
             Email:{' '}
             <Link
-              href={`mailto:${config.contact.email}`}
+              href={`mailto:KES{config.contact.email}`}
               size='medium'
               className='underline hover:text-green-100 transition'
             >
@@ -42,7 +42,7 @@ export default function Footer() {
           <span>
             Phone:{' '}
             <Link
-              href={`tel:${config.contact.phone}`}
+              href={`tel:KES{config.contact.phone}`}
               size='medium'
               className='underline hover:text-green-100 transition'
             >

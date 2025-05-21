@@ -159,7 +159,7 @@ export default function CheckoutModal({
           </div>
           <div className='mt-6 border-t pt-4'>
             <h3 className='text-lg font-semibold'>
-              Total: ${totalPrice.toFixed(2)}
+              Total: KES{totalPrice.toFixed(2)}
             </h3>
             <button
               type='submit'

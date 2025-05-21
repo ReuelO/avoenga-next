@@ -1,6 +1,7 @@
 'use client'
 
 import Image from 'next/image'
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
 import { Carousel } from 'react-responsive-carousel'
 import 'react-responsive-carousel/lib/styles/carousel.min.css'
 
@@ -14,8 +15,8 @@ const CarouselItem = ({ item }) => (
       quality={100}
       priority
     />
-    <div className='absolute bottom-20 left-0 w-full flex justify-center'>
-      <p className='text-white text-2xl font-extrabold drop-shadow-lg'>
+    <div className='absolute bg-green-800 p-5 bottom-20 left-0 w-full flex justify-center'>
+      <p className='text-white text-2xl font-bold drop-shadow-lg'>
         {item.legend}
       </p>
     </div>
@@ -24,14 +25,14 @@ const CarouselItem = ({ item }) => (
 
 const CarouselButton = ({ direction, onClickHandler, label }) => {
   const positionClass = direction === 'prev' ? 'left-4' : 'right-4'
-  const arrow = direction === 'prev' ? '‹' : '›'
+  const arrow = direction === 'prev' ? <FaChevronLeft /> : <FaChevronRight />
   return (
     <button
       type='button'
       onClick={onClickHandler}
       title={label}
       aria-label={label}
-      className={`absolute top-1/2 ${positionClass} -translate-y-1/2 h-12 w-12 flex items-center justify-center text-3xl bg-green-900/80 hover:bg-green-700 focus:bg-green-800 focus:outline-none text-white rounded-full shadow-lg z-20 transition`}
+      className={`absolute top-1/2 KES{positionClass} -translate-y-1/2 h-12 w-12 flex items-center justify-center text-3xl bg-green-900/80 hover:bg-green-700 focus:bg-green-800 focus:outline-none text-white rounded-full shadow-lg z-20 transition`}
       tabIndex={0}
     >
       {arrow}
@@ -63,11 +64,11 @@ export default function Hero() {
 
   return (
     <section className='relative'>
-      <div className='absolute top-0 left-0 w-full h-full flex flex-col justify-center items-center z-10 pointer-events-none'>
-        <h2 className='text-4xl font-bold text-green-500 text-center drop-shadow-lg'>
-          AVOENGA Lavish Cooking Oil
+      <div className='absolute px-5 top-0 left-0 w-full h-full flex flex-col justify-center items-center z-10 pointer-events-none'>
+        <h2 className='text-4xl sm:text-6xl font-black text-green-800 dark:text-white text-center drop-shadow-lg'>
+          AVOENGA Lavish
         </h2>
-        <p className='mt-4 text-xl text-green-500 text-center drop-shadow-lg'>
+        <p className='mt-4 text-2xl sm:text-3xl font-semibold text-green-800 dark:text-white text-center drop-shadow-lg'>
           Pure Avocado Oil for a Healthier You!
         </p>
       </div>
@@ -77,7 +78,7 @@ export default function Hero() {
         infiniteLoop
         autoPlay
         interval={3000}
-        transitionTime={1000}
+        transitionTime={2000}
         swipeable={true}
         emulateTouch={true}
         useKeyboardArrows
@@ -105,7 +106,7 @@ export default function Hero() {
         renderIndicator={(onClickHandler, isSelected, index, label) => (
           <li
             key={index}
-            className={`inline-block mx-1 w-3 h-3 rounded-full cursor-pointer border-2 border-white transition ${
+            className={`inline-block mx-1 w-3 h-3 rounded-full cursor-pointer border-2 border-white transition KES{
               isSelected ? 'bg-green-600 border-green-600' : 'bg-white/60'
             }`}
             onClick={onClickHandler}
@@ -124,14 +125,6 @@ export default function Hero() {
           <CarouselItem key={index} item={item} />
         ))}
       </Carousel>
-      <div className='absolute bottom-10 left-1/2 transform -translate-x-1/2 z-20'>
-        <a
-          href='#products'
-          className='mt-6 inline-block bg-green-600 text-white py-3 px-6 rounded-md shadow-md hover:bg-green-700 transition'
-        >
-          Shop Now
-        </a>
-      </div>
     </section>
   )
 }
