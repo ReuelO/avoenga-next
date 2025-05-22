@@ -3,8 +3,8 @@ import { FaTag, FaWineBottle } from 'react-icons/fa'
 
 export default function ProductCardGrid({ product, onBuyNow }) {
   return (
-    <div className='bg-white dark:bg-green-800 p-4 rounded-lg shadow-lg transform transition duration-500 hover:scale-105'>
-      <div className='flex justify-center items-center h-50 w-50 bg-green-200 rounded-full mx-auto m-6'>
+    <div className='bg-green-50 dark:bg-green-800 p-5 rounded-lg shadow-lg transform transition duration-500 hover:scale-105'>
+      <div className='flex justify-center items-center h-50 w-50 bg-green-200 rounded-full mx-auto m-5'>
         {!product.image ? (
           <Image
             src={product.image}
@@ -17,13 +17,13 @@ export default function ProductCardGrid({ product, onBuyNow }) {
           <FaWineBottle className='text-6xl text-green-700' />
         )}
       </div>
-      <h3 className='text-2xl font-bold text-green-800 dark:text-green-100 mt-4'>
+      <h3 className='text-2xl font-bold text-green-800 dark:text-green-100'>
         {product.name}
       </h3>
-      <p className='text-lg font-semibold text-green-700 dark:text-green-300 mt-4'>
+      <p className='text-lg font-semibold text-green-700 dark:text-green-300 m-4'>
         {product.description}
       </p>
-      <p className='text-xl font-semibold text-green-700 dark:text-green-100 mt-4'>
+      <p className='text-xl font-semibold text-green-700 dark:text-green-100'>
         {product.price}
       </p>
       <button

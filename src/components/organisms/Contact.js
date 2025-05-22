@@ -16,7 +16,7 @@ export default function Contact() {
     if (!fields.name.trim()) newErrors.name = 'Name is required'
     if (!fields.email.trim()) {
       newErrors.email = 'Email is required'
-    } else if (!/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}KES/.test(fields.email)) {
+    } else if (!/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(fields.email)) {
       newErrors.email = 'Enter a valid email'
     }
     if (!fields.message.trim()) newErrors.message = 'Message is required'
@@ -49,18 +49,18 @@ export default function Contact() {
         <h1 className='text-lg font-bold text-green-700 dark:text-green-100 mb-4'>
           Reach Out
         </h1>
-        <h2 className='text-4xl font-black text-green-700 dark:text-green-100 mb-6'>
+        <h2 className='text-3xl sm:text-4xl font-black text-green-700 dark:text-green-100 mb-6'>
           Get In Touch
         </h2>
         <div className='max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch'>
           <form
             onSubmit={handleSubmit}
-            className='bg-white dark:bg-green-900 p-6 rounded-lg shadow-lg flex flex-col justify-center'
+            className='bg-green-50 dark:bg-green-900 p-6 rounded-lg shadow-lg flex flex-col justify-center'
           >
             <h3 className='text-2xl font-bold text-green-900 dark:text-green-100 mb-4'>
               Contact Form
             </h3>
-            <p className='text-lg text-green-700 dark:text-green-200 mb-6'>
+            <p className='text-lg font-semibold text-green-700 dark:text-green-200 mb-6'>
               Have a question or feedback? <br />
               Reach out and we&apos;ll get back to you!
             </p>
@@ -135,7 +135,7 @@ export default function Contact() {
               </div>
             )}
           </form>
-          <div className='bg-white dark:bg-green-900 p-0 rounded-lg shadow-lg overflow-hidden flex items-center justify-center'>
+          <div className='bg-green-50 dark:bg-green-900 p-0 rounded-lg shadow-lg overflow-hidden flex items-center justify-center'>
             <iframe
               title='Avoenga Location'
               src='https://www.google.com/maps?q=Keroka,+Kenya&output=embed'

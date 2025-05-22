@@ -1,5 +1,6 @@
 'use client'
 
+import config from '@/config'
 import Image from 'next/image'
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
 import { Carousel } from 'react-responsive-carousel'
@@ -10,13 +11,14 @@ const CarouselItem = ({ item }) => (
     <Image
       src={item.src}
       alt={item.alt}
-      layout='fill'
-      objectFit='cover'
+      fill
+      sizes='100vw'
+      className='object-cover brightness-50'
       quality={100}
       priority
     />
     <div className='absolute bg-green-800 p-5 bottom-20 left-0 w-full flex justify-center'>
-      <p className='text-white text-2xl font-bold drop-shadow-lg'>
+      <p className='text-white sm:text-xl font-bold drop-shadow-lg'>
         {item.legend}
       </p>
     </div>
@@ -32,7 +34,7 @@ const CarouselButton = ({ direction, onClickHandler, label }) => {
       onClick={onClickHandler}
       title={label}
       aria-label={label}
-      className={`absolute top-1/2 KES{positionClass} -translate-y-1/2 h-12 w-12 flex items-center justify-center text-3xl bg-green-900/80 hover:bg-green-700 focus:bg-green-800 focus:outline-none text-white rounded-full shadow-lg z-20 transition`}
+      className={`hidden sm:flex absolute top-1/2 ${positionClass} -translate-y-1/2 h-12 w-12 items-center justify-center text-3xl bg-green-900/80 hover:bg-green-700 focus:bg-green-800 focus:outline-none text-white rounded-full shadow-lg z-20 transition`}
       tabIndex={0}
     >
       {arrow}
@@ -41,35 +43,21 @@ const CarouselButton = ({ direction, onClickHandler, label }) => {
 }
 
 export default function Hero() {
-  const carouselItems = [
-    {
-      src: '/images/cover-1.jpg',
-      alt: 'AVOENGA Lavish Avocado Cooking Oil',
-      legend:
-        'Experience the rich, natural goodness of AVOENGA Lavish Avocado Cooking Oil',
-    },
-    {
-      src: '/images/trees-1.jpg',
-      alt: 'Avocado Trees',
-      legend:
-        'Cold-pressed from the finest avocados for maximum nutrition and flavor.',
-    },
-    {
-      src: '/images/avocado-oil-1.jpg',
-      alt: 'Avocado Oil for Cooking',
-      legend:
-        'AVOENGA Lavish is 100% pure, cold-pressed avocado oil, meaning it retains all its natural nutrients, antioxidants, and rich flavor.',
-    },
-  ]
+  const carouselItems = config.carouselItems.map((item) => ({
+    src: item.src,
+    alt: item.alt,
+    legend: item.legend,
+  }))
 
   return (
     <section className='relative'>
       <div className='absolute px-5 top-0 left-0 w-full h-full flex flex-col justify-center items-center z-10 pointer-events-none'>
-        <h2 className='text-4xl sm:text-6xl font-black text-green-800 dark:text-white text-center drop-shadow-lg'>
+        <h2 className='text-3xl sm:text-4xl sm:text-6xl font-black text-green-500 dark:text-green-300 text-center drop-shadow-lg'>
           AVOENGA Lavish
         </h2>
-        <p className='mt-4 text-2xl sm:text-3xl font-semibold text-green-800 dark:text-white text-center drop-shadow-lg'>
-          Pure Avocado Oil for a Healthier You!
+        <p className='mt-4 text-2xl sm:text-3xl font-bold text-green-300 dark:text-green-100 text-center drop-shadow-lg'>
+          Pure Avocado Oil <br />
+          For a Healthier You!
         </p>
       </div>
       <Carousel
@@ -106,7 +94,7 @@ export default function Hero() {
         renderIndicator={(onClickHandler, isSelected, index, label) => (
           <li
             key={index}
-            className={`inline-block mx-1 w-3 h-3 rounded-full cursor-pointer border-2 border-white transition KES{
+            className={`inline-block mx-1 w-3 h-3 rounded-full cursor-pointer border-2 border-green-100 transition ${
               isSelected ? 'bg-green-600 border-green-600' : 'bg-white/60'
             }`}
             onClick={onClickHandler}

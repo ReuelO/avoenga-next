@@ -11,7 +11,7 @@ export default function Link({ href, children, className, size }) {
   return (
     <NextLink
       href={href}
-      className={`KES{sizes[size]} KES{className} hover:underline`}
+      className={`${sizes[size]} ${className} hover:underline`}
     >
       {children}
     </NextLink>

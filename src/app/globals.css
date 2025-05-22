@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@custom-variant dark (&:where(.dark, .dark *));
 
 :root {
   --background: #ffffff;
@@ -8,10 +9,11 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-inter-sans);
+  --font-mono: var(--font-inter-mono);
 }
 
+/* Remove or comment out this media query if using Tailwind's dark mode */
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
@@ -20,7 +22,6 @@
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  @apply bg-white text-neutral-900 dark:bg-neutral-900 dark:text-neutral-100;
   /* font-family: 'Inter', system-ui, -apple-system, sans-serif; */
 }

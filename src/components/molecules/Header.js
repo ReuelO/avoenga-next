@@ -2,33 +2,54 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { FaBars, FaMoon, FaSun } from 'react-icons/fa'
 import config from '../../config'
 
 export default function Header() {
   const [theme, setTheme] = useState('light')
   const [menuOpen, setMenuOpen] = useState(false)
+  const mobileNavRef = useRef(null)
 
-  // Set initial theme and keep only one theme class on <html>
+  // On mount, check localStorage or system preference
   useEffect(() => {
-    const systemTheme = window.matchMedia('(prefers-color-scheme: dark)')
-      .matches
-      ? 'dark'
-      : 'light'
-    setTheme(systemTheme)
-    document.documentElement.classList.remove('light', 'dark')
-    document.documentElement.classList.add(systemTheme)
+    const savedTheme = localStorage.getItem('theme')
+    if (savedTheme === 'light' || savedTheme === 'dark') {
+      setTheme(savedTheme)
+    } else {
+      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)')
+        .matches
+        ? 'dark'
+        : 'light'
+      setTheme(systemTheme)
+    }
   }, [])
 
-  // Toggle theme and keep only one theme class on <html>
+  // Keep <html> class in sync with theme state and persist to localStorage
+  useEffect(() => {
+    document.documentElement.classList.remove('light', 'dark')
+    document.documentElement.classList.add(theme)
+    localStorage.setItem('theme', theme)
+  }, [theme])
+
+  // Close mobile nav on click outside
+  useEffect(() => {
+    if (!menuOpen) return
+    const handleClick = (e) => {
+      if (
+        mobileNavRef.current &&
+        !mobileNavRef.current.contains(e.target) &&
+        !e.target.closest('[aria-label="Open Menu"]')
+      ) {
+        setMenuOpen(false)
+      }
+    }
+    document.addEventListener('mousedown', handleClick)
+    return () => document.removeEventListener('mousedown', handleClick)
+  }, [menuOpen])
+
   const toggleTheme = () => {
-    setTheme((prevTheme) => {
-      const newTheme = prevTheme === 'light' ? 'dark' : 'light'
-      document.documentElement.classList.remove('light', 'dark')
-      document.documentElement.classList.add(newTheme)
-      return newTheme
-    })
+    setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'))
   }
 
   return (
@@ -48,7 +69,7 @@ export default function Header() {
           </span>
         </Link>
         {/* Desktop Nav */}
-        <nav className='hidden md:flex space-x-6'>
+        <nav className='hidden md:flex space-x-6 items-center'>
           {config.navigationLinks.map((link) => (
             <a
               key={link.name}
@@ -58,19 +79,35 @@ export default function Header() {
               {link.name}
             </a>
           ))}
+          {/* Theme Toggle inside nav */}
+          <button
+            onClick={toggleTheme}
+            className={`ml-6 flex items-center gap-2 px-4 py-2 rounded-full border-2 transition font-semibold shadow-sm
+              ${
+                theme === 'dark'
+                  ? 'bg-green-800 border-green-700 text-yellow-300 hover:bg-green-700'
+                  : 'bg-white border-green-200 text-green-700 hover:bg-green-100'
+              }
+            `}
+            aria-label='Toggle Theme'
+          >
+            {theme === 'light' ? (
+              <>
+                <FaMoon className='h-5 w-5' />
+                <span>
+                  Switch to <span className='font-bold'>Dark</span> Mode
+                </span>
+              </>
+            ) : (
+              <>
+                <FaSun className='h-5 w-5' />
+                <span>
+                  Switch to <span className='font-bold'>Light</span> Mode
+                </span>
+              </>
+            )}
+          </button>
         </nav>
-        {/* Theme Toggle */}
-        <button
-          onClick={toggleTheme}
-          className='ml-4 p-2 rounded-full bg-white/20 hover:bg-white/40 dark:bg-green-700 dark:hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-300 transition'
-          aria-label='Toggle Theme'
-        >
-          {theme === 'light' ? (
-            <FaMoon className='h-6 w-6 text-white' />
-          ) : (
-            <FaSun className='h-6 w-6 text-yellow-400' />
-          )}
-        </button>
         {/* Mobile Hamburger */}
         <button
           className='ml-2 md:hidden p-2 rounded-full bg-white/20 hover:bg-white/40 dark:bg-green-700 dark:hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-300 transition'
@@ -82,7 +119,10 @@ export default function Header() {
       </div>
       {/* Mobile Nav */}
       {menuOpen && (
-        <nav className='md:hidden bg-green-700 dark:bg-green-800 px-4 pb-4 pt-2 space-y-2 z-50'>
+        <nav
+          ref={mobileNavRef}
+          className='md:hidden bg-green-700 dark:bg-green-800 px-4 pb-4 pt-2 space-y-2 z-50'
+        >
           {config.navigationLinks.map((link) => (
             <a
               key={link.name}
@@ -93,6 +133,34 @@ export default function Header() {
               {link.name}
             </a>
           ))}
+          {/* Theme Toggle inside mobile nav */}
+          <button
+            onClick={toggleTheme}
+            className={`mt-2 flex items-center gap-2 w-full justify-center px-4 py-2 rounded-full border-2 transition font-semibold shadow-sm
+              ${
+                theme === 'dark'
+                  ? 'bg-green-900 border-green-700 text-yellow-300 hover:bg-green-800'
+                  : 'bg-white border-green-200 text-green-700 hover:bg-green-100'
+              }
+            `}
+            aria-label='Toggle Theme'
+          >
+            {theme === 'light' ? (
+              <>
+                <FaMoon className='h-5 w-5' />
+                <span>
+                  Switch to <span className='font-bold'>Dark</span> Mode
+                </span>
+              </>
+            ) : (
+              <>
+                <FaSun className='h-5 w-5' />
+                <span>
+                  Switch to <span className='font-bold'>Light</span> Mode
+                </span>
+              </>
+            )}
+          </button>
         </nav>
       )}
     </header>

@@ -39,10 +39,10 @@ export default function Cart({
       </h2>
       {cartItems.length === 0 ? (
         <div className='flex flex-col items-center justify-center'>
-          <p className='text-lg text-green-700 dark:text-green-100 mb-4'>
+          <p className='text-lg font-semibold text-green-700 dark:text-green-100 mb-4'>
             Add some products to your cart.
           </p>
-          <FaCartPlus className='text-6xl text-green-100 mb-4' />
+          <FaCartPlus className='text-6xl text-green-700 dark:text-green-100 mb-4' />
         </div>
       ) : (
         <div className='text-center sm:text-left'>
@@ -110,7 +110,7 @@ export default function Cart({
             ))}
           </ul>
           <div className='mt-6 pt-4 flex flex-col justify-center sm:justify-start border-t border-green-200 dark:border-green-800'>
-            <h3 className='text-lg sm:text-2xl font-semibold text-center sm:text-right text-green-800 dark:text-green-100'>
+            <h3 className='text-lg sm:text-2xl font-bold text-center sm:text-right text-green-800 dark:text-green-100'>
               Total: ${totalPrice.toFixed(2)}
             </h3>
             <button

@@ -106,17 +106,19 @@ export default function OrderForm({ initialProduct }) {
   return (
     <section
       id='order'
-      className='py-12 bg-green-100 dark:bg-green-700 text-center p-5'
+      className='py-12 bg-white dark:bg-green-700 text-center p-5'
     >
       <div className='max-w-4xl mx-auto py-12'>
         <h1 className='text-lg font-bold text-green-700 dark:text-green-100 mb-4'>
-          Order Now
+          Place Order
         </h1>
-        <h2 className='text-4xl font-black text-green-700 dark:text-green-100 mb-6'>
-          Place Your Order
+        <h2 className='text-3xl sm:text-4xl font-black text-green-700 dark:text-green-100 mb-6'>
+          Order Now
         </h2>
-
-        <div className='bg-white dark:bg-green-900 p-6 rounded-lg shadow-lg mx-6'>
+        <p className='sm:text-xl font-semibold text-green-700 dark:text-green-300 mx-4'>
+          
+        </p>
+        <div className='bg-green-50 dark:bg-green-900 p-6 rounded-lg shadow-lg mx-6'>
           <Cart
             cartItems={cartItems}
             removeFromCart={(index) =>

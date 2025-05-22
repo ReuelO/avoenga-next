@@ -12,27 +12,29 @@ function SocialMediaLink({ href, ariaLabel, Icon, color }) {
       target='_blank'
       rel='noopener noreferrer'
     >
-      <Icon className={`h-8 w-8 KES{color} drop-shadow`} />
+      <Icon className={`h-8 w-8 ${color} drop-shadow`} />
     </Link>
   )
 }
 
 const socialMediaIcons = {
   facebook: { icon: FaFacebook, color: 'text-green-400' },
+  instagram: { icon: FaInstagram, color: 'text-green-500' },
   twitter: { icon: FaTwitter, color: 'text-green-300' },
-  instagram: { icon: FaInstagram, color: 'text-green-600' },
 }
 
 export default function Footer() {
   return (
     <footer className='bg-green-600 dark:bg-green-900 text-white shadow-inner pt-10 pb-4'>
       <div className='max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8 px-4'>
-        <div className='flex flex-col items-start gap-2'>
-          <span className='text-xl font-bold mb-1'>Contact Us</span>
+        <div className='flex flex-col items-start gap-2 font-semibold'>
+          <span className='text-2xl font-bold text-green-100 mb-1'>
+            Contact Us
+          </span>
           <span>
             Email:{' '}
             <Link
-              href={`mailto:KES{config.contact.email}`}
+              href={`mailto:${config.contact.email}`}
               size='medium'
               className='underline hover:text-green-100 transition'
             >
@@ -42,7 +44,7 @@ export default function Footer() {
           <span>
             Phone:{' '}
             <Link
-              href={`tel:KES{config.contact.phone}`}
+              href={`tel:${config.contact.phone}`}
               size='medium'
               className='underline hover:text-green-100 transition'
             >

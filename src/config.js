@@ -42,8 +42,28 @@ const config = {
     { name: 'Who We Are', href: '#about' },
     { name: 'Why Choose Us', href: '#benefits' },
     { name: 'What We Sell', href: '#products' },
-    { name: 'Order Now', href: '#order' },
+    { name: 'Place Order', href: '#order' },
     { name: 'Reach Out', href: '#contact' },
+  ],
+  carouselItems: [
+    {
+      src: '/images/cover-1.jpg',
+      alt: 'AVOENGA Lavish Avocado Cooking Oil',
+      legend:
+        'Experience the rich, natural goodness of AVOENGA Lavish Avocado Cooking Oil',
+    },
+    {
+      src: '/images/trees-1.jpg',
+      alt: 'Avocado Trees',
+      legend:
+        'Cold-pressed from the finest avocados for maximum nutrition and flavor.',
+    },
+    {
+      src: '/images/avocado-oil-1.jpg',
+      alt: 'Avocado Oil for Cooking',
+      legend:
+        'AVOENGA Lavish is 100% pure, cold-pressed avocado oil, meaning it retains all its natural nutrients, antioxidants, and rich flavor.',
+    },
   ],
   products: [
     {
