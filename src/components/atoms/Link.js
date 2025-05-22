@@ -1,7 +1,13 @@
 import NextLink from 'next/link'
 import PropTypes from 'prop-types'
 
-export default function Link({ href, children, className, size }) {
+export default function Link({
+  href,
+  children,
+  className = '',
+  size = 'medium',
+  ...props
+}) {
   const sizes = {
     small: 'text-sm',
     medium: 'text-base',
@@ -11,7 +17,8 @@ export default function Link({ href, children, className, size }) {
   return (
     <NextLink
       href={href}
-      className={`${sizes[size]} ${className} hover:underline`}
+      className={`${sizes[size]} ${className} hover:underline transition-colors`}
+      {...props}
     >
       {children}
     </NextLink>

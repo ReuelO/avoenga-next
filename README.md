@@ -1,36 +1,98 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# AVOENGA Lavish
 
-## Getting Started
+**AVOENGA Lavish** is a modern Next.js website for a premium avocado oil brand, showcasing the benefits, products, and story of AVOENGA Lavish.  
+This project is built with Next.js, React, and Tailwind CSS.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🌱 About AVOENGA Lavish
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+AVOENGA Lavish is dedicated to providing pure, organic, cold-pressed avocado oil for cooking, skincare, and hair care.  
+Our oil is packed with nutrients, antioxidants, and healthy fats, making it perfect for a healthier you!
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+- **Slogan:** Pure & Organic AVOENGA Lavish
+- **Description:** Discover the benefits of pure and organic avocado oil for your skin, hair, and cooking.
+- **Location:** 24-40202, Keroka, Kenya
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 🥑 Key Features
 
-To learn more about Next.js, take a look at the following resources:
+- **100% Pure & Cold-Pressed:** Retains all the natural nutrients and antioxidants.
+- **Rich in Healthy Fats:** Packed with heart-friendly monounsaturated fats.
+- **High Smoke Point:** Perfect for frying, roasting, and sautéing (up to 271°C).
+- **Versatile & Delicious:** Great for cooking, salads, and even skincare.
+- **Supports Heart Health:** Lowers bad cholesterol and boosts good cholesterol.
+- **Boosts Immunity:** High in Vitamin E and antioxidants.
+- **Aids Digestion:** Gentle on the stomach, promoting gut health.
+- **Enhances Skin & Hair:** Natural nourishment for glowing skin and strong hair.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🛒 Products
 
-## Deploy on Vercel
+| Product Name             | Description                                            | Price  |
+| ------------------------ | ------------------------------------------------------ | ------ |
+| Cold-Pressed Avocado Oil | Rich in vitamins, perfect for skin, hair, and cooking. | $20.00 |
+| Organic Avocado Oil      | Pure and organic, ideal for a healthy lifestyle.       | $25.00 |
+| Avocado Oil Blend        | A perfect blend of avocado and other essential oils.   | $30.00 |
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🚀 Website Sections
+
+- **Hero:** Eye-catching carousel with product highlights and call to action.
+- **About:** Learn about our story, mission, and what makes AVOENGA Lavish unique.
+- **Benefits:** Explore the health and culinary benefits of avocado oil.
+- **Products:** Browse our premium avocado oil products.
+- **Contact:** Get in touch via our contact form or social media.
+
+---
+
+## 📞 Contact
+
+- **Email:** info@avoenga-lavish.com
+- **Phone:** +254-717-101-257
+- **Address:** 24-40202, Keroka, Kenya
+
+**Follow us:**
+
+- [Facebook](https://www.facebook.com/avoenga-lavish)
+- [Twitter](https://twitter.com/avoenga-lavish)
+- [Instagram](https://www.instagram.com/avoenga-lavish)
+
+---
+
+## 🛠️ Tech Stack
+
+- [Next.js](https://nextjs.org/)
+- [React](https://react.dev/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [React Icons](https://react-icons.github.io/react-icons/)
+
+---
+
+## 🚧 Development & Production
+
+- Install dependencies:  
+  `npm install`
+- Run in development:  
+  `npm run dev`
+- Build for production:  
+  `npm run build`
+- Start production server:  
+  `npm start`
+
+---
+
+## 📂 Project Structure
+
+- `/src/components/` — UI components (Hero, About, Products, etc.)
+- `/src/config.js` — Site configuration and data
+- `/public/images/` — Product and carousel images
+
+---
+
+## 📢 License
+
+&copy; AVOENGA Lavish. All rights reserved.
