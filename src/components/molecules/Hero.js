@@ -52,10 +52,10 @@ export default function Hero() {
   return (
     <section className='relative'>
       <div className='absolute px-5 top-0 left-0 w-full h-full flex flex-col justify-center items-center z-10 pointer-events-none'>
-        <h2 className='text-3xl sm:text-4xl sm:text-6xl font-black text-green-500 dark:text-green-300 text-center drop-shadow-lg'>
+        <h2 className='text-3xl sm:text-6xl font-black text-green-500 dark:text-green-700 text-center drop-shadow-lg'>
           AVOENGA Lavish
         </h2>
-        <p className='mt-4 text-2xl sm:text-3xl font-bold text-green-300 dark:text-green-100 text-center drop-shadow-lg'>
+        <p className='mt-4 text-2xl sm:text-3xl font-bold text-white text-center drop-shadow-lg'>
           Pure Avocado Oil <br />
           For a Healthier You!
         </p>

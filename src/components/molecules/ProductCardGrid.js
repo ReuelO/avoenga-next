@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { FaTag, FaWineBottle } from 'react-icons/fa'
+import { FaWineBottle } from 'react-icons/fa'
 
 export default function ProductCardGrid({ product, onBuyNow }) {
   return (
@@ -17,18 +17,18 @@ export default function ProductCardGrid({ product, onBuyNow }) {
           <FaWineBottle className='text-6xl text-green-700' />
         )}
       </div>
-      <h3 className='text-2xl font-bold text-green-800 dark:text-green-100'>
+      <h3 className='text-2xl font-bold text-green-800 dark:text-white'>
         {product.name}
       </h3>
       <p className='text-lg font-semibold text-green-700 dark:text-green-300 m-4'>
         {product.description}
       </p>
-      <p className='text-xl font-semibold text-green-700 dark:text-green-100'>
+      <p className='text-xl font-semibold text-green-700 dark:text-white'>
         {product.price}
       </p>
       <button
         onClick={() => onBuyNow(product)}
-        className='m-5 bg-green-600 hover:bg-green-700 transition text-white font-bold py-2 px-4 rounded-md shadow-md'
+        className='m-5 bg-green-600 hover:bg-green-700 transition text-white text-lg font-bold py-2 px-4 rounded-md shadow-md'
       >
         Add to Cart
       </button>

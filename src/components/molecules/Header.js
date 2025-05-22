@@ -64,7 +64,7 @@ export default function Header() {
             className='h-10 w-10 rounded-full border-2 border-white group-hover:scale-105 transition'
             priority
           />
-          <span className='text-2xl font-extrabold tracking-tight group-hover:text-green-100 transition'>
+          <span className='text-2xl font-extrabold tracking-tight group-hover:text-white transition'>
             {config.siteName}
           </span>
         </Link>
@@ -85,24 +85,24 @@ export default function Header() {
             className={`ml-6 flex items-center gap-2 px-4 py-2 rounded-full border-2 transition font-semibold shadow-sm
               ${
                 theme === 'dark'
-                  ? 'bg-green-800 border-green-700 text-yellow-300 hover:bg-green-700'
-                  : 'bg-white border-green-200 text-green-700 hover:bg-green-100'
+                  ? 'bg-white border-green-200 text-green-700 hover:bg-green-100'
+                  : 'bg-green-800 border-green-700 text-yellow-300 hover:bg-green-700'
               }
             `}
             aria-label='Toggle Theme'
           >
             {theme === 'light' ? (
               <>
-                <FaMoon className='h-5 w-5' />
+                <FaSun className='h-5 w-5' />
                 <span>
-                  Switch to <span className='font-bold'>Dark</span> Mode
+                  <span className='font-bold'>Light</span> Mode
                 </span>
               </>
             ) : (
               <>
-                <FaSun className='h-5 w-5' />
+                <FaMoon className='h-5 w-5' />
                 <span>
-                  Switch to <span className='font-bold'>Light</span> Mode
+                  <span className='font-bold'>Dark</span> Mode
                 </span>
               </>
             )}
@@ -139,24 +139,24 @@ export default function Header() {
             className={`mt-2 flex items-center gap-2 w-full justify-center px-4 py-2 rounded-full border-2 transition font-semibold shadow-sm
               ${
                 theme === 'dark'
-                  ? 'bg-green-900 border-green-700 text-yellow-300 hover:bg-green-800'
-                  : 'bg-white border-green-200 text-green-700 hover:bg-green-100'
+                  ? 'bg-white border-green-200 text-green-700 hover:bg-green-100'
+                  : 'bg-green-900 border-green-700 text-yellow-300 hover:bg-green-800'
               }
             `}
             aria-label='Toggle Theme'
           >
             {theme === 'light' ? (
               <>
-                <FaMoon className='h-5 w-5' />
+                <FaSun className='h-5 w-5' />
                 <span>
-                  Switch to <span className='font-bold'>Dark</span> Mode
+                  <span className='font-bold'>Light</span> Mode
                 </span>
               </>
             ) : (
               <>
-                <FaSun className='h-5 w-5' />
+                <FaMoon className='h-5 w-5' />
                 <span>
-                  Switch to <span className='font-bold'>Light</span> Mode
+                  <span className='font-bold'>Dark</span> Mode
                 </span>
               </>
             )}

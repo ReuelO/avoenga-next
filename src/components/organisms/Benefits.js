@@ -7,7 +7,7 @@ const BenefitCard = ({ title, description, Icon }) => (
       <Icon className='text-green-600 dark:text-green-200 text-4xl' />
     </div>
     <div className='text-left'>
-      <h3 className='text-lg font-bold text-green-800 dark:text-green-100 mb-1'>
+      <h3 className='text-lg font-bold text-green-800 dark:text-white mb-1'>
         {title}
       </h3>
       <p className='font-semibold text-green-700 dark:text-green-300 text-base'>
@@ -24,14 +24,15 @@ export default function Benefits() {
       className='py-12 bg-white dark:bg-green-800 text-center p-5'
     >
       <div className='max-w-6xl mx-auto py-12'>
-        <h1 className='text-lg font-bold text-green-700 dark:text-green-100 mb-4'>
+        <h1 className='text-lg font-bold text-green-700 dark:text-white mb-4'>
           Why Choose Us
         </h1>
-        <h2 className='text-3xl sm:text-4xl font-black text-green-700 dark:text-green-100 mb-6'>
+        <h2 className='text-3xl sm:text-4xl font-black text-green-700 dark:text-white mb-6'>
           The Benefits of AVOENGA Avocado Oil
         </h2>
-        <p className='sm:text-xl font-semibold text-green-700 dark:text-green-100 m-4'>
-          Learn about the numerous health benefits of our premium avocado oil, <br />
+        <p className='sm:text-lg font-semibold text-green-700 dark:text-white mb-8 mx-4'>
+          Learn about the numerous health benefits of our premium avocado oil,{' '}
+          <br />
           sourced from the finest avocados and packed with nutrients.
         </p>
         <div className='mt-6 mx-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8'>

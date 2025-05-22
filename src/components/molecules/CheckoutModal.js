@@ -73,50 +73,86 @@ export default function CheckoutModal({
   if (!isOpen) return null
 
   return (
-    <div className='fixed inset-0 z-50 bg-green-800 bg-opacity-75 backdrop-blur-sm flex items-center justify-center'>
+    <div className='fixed inset-0 z-50 bg-transparent backdrop-blur-md flex items-center justify-center'>
       <div
         ref={modalRef}
         className='bg-white dark:bg-green-900 p-8 rounded-lg shadow-2xl w-full max-w-2xl m-4 max-h-full overflow-y-auto border border-green-200 dark:border-green-800'
       >
-        <h2 className='text-3xl font-bold text-green-700 dark:text-green-100 mb-6 text-center'>
+        <h2 className='text-3xl font-bold text-green-700 dark:text-white mb-6 text-center'>
           Checkout
         </h2>
         <form onSubmit={handlePlaceOrder} className='space-y-4'>
-          <Input
-            type='text'
-            placeholder='Your Name'
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            error={errors.name}
-          />
-          <Input
-            type='email'
-            placeholder='Your Email'
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            error={errors.email}
-          />
-          <Input
-            type='tel'
-            placeholder='Your Phone Number'
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
-            error={errors.phone}
-          />
-          <Input
-            type='text'
-            placeholder='Your Address'
-            value={address}
-            onChange={(e) => setAddress(e.target.value)}
-            error={errors.address}
-          />
           <div>
-            <label className='block text-green-700 dark:text-green-100 mb-2 font-semibold'>
+            <label
+              htmlFor='checkout-name'
+              className='block text-green-800 dark:text-green-100 font-semibold mb-1'
+            >
+              Name
+            </label>
+            <Input
+              id='checkout-name'
+              type='text'
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              error={errors.name}
+              placeholder='' // Remove placeholder
+            />
+          </div>
+          <div>
+            <label
+              htmlFor='checkout-email'
+              className='block text-green-800 dark:text-green-100 font-semibold mb-1'
+            >
+              Email
+            </label>
+            <Input
+              id='checkout-email'
+              type='email'
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              error={errors.email}
+              placeholder=''
+            />
+          </div>
+          <div>
+            <label
+              htmlFor='checkout-phone'
+              className='block text-green-800 dark:text-green-100 font-semibold mb-1'
+            >
+              Phone Number
+            </label>
+            <Input
+              id='checkout-phone'
+              type='tel'
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+              error={errors.phone}
+              placeholder=''
+            />
+          </div>
+          <div>
+            <label
+              htmlFor='checkout-address'
+              className='block text-green-800 dark:text-green-100 font-semibold mb-1'
+            >
+              Address
+            </label>
+            <Input
+              id='checkout-address'
+              type='text'
+              value={address}
+              onChange={(e) => setAddress(e.target.value)}
+              error={errors.address}
+              placeholder=''
+            />
+          </div>
+          <div>
+            <label className='block text-green-800 dark:text-green-100 font-semibold mb-2'>
               Payment Method
             </label>
             <div className='flex flex-col sm:flex-row gap-4 justify-between'>
               <label className='flex-1 flex flex-col items-center bg-green-50 dark:bg-green-800 rounded-lg p-4 cursor-pointer border border-green-200 dark:border-green-700 hover:border-green-400 transition'>
-                <FaCreditCard className='text-3xl text-green-700 dark:text-green-100 mb-2' />
+                <FaCreditCard className='text-3xl text-green-700 dark:text-white mb-2' />
                 <input
                   type='radio'
                   name='paymentMethod'
@@ -125,12 +161,12 @@ export default function CheckoutModal({
                   onChange={(e) => setPaymentMethod(e.target.value)}
                   className='mb-1 accent-green-600'
                 />
-                <span className='text-green-700 dark:text-green-100 text-sm'>
+                <span className='text-green-700 dark:text-white text-sm'>
                   Credit/Debit Card
                 </span>
               </label>
               <label className='flex-1 flex flex-col items-center bg-green-50 dark:bg-green-800 rounded-lg p-4 cursor-pointer border border-green-200 dark:border-green-700 hover:border-green-400 transition'>
-                <FaPaypal className='text-3xl text-green-700 dark:text-green-100 mb-2' />
+                <FaPaypal className='text-3xl text-green-700 dark:text-white mb-2' />
                 <input
                   type='radio'
                   name='paymentMethod'
@@ -139,12 +175,12 @@ export default function CheckoutModal({
                   onChange={(e) => setPaymentMethod(e.target.value)}
                   className='mb-1 accent-green-600'
                 />
-                <span className='text-green-700 dark:text-green-100 text-sm'>
+                <span className='text-green-700 dark:text-white text-sm'>
                   PayPal
                 </span>
               </label>
               <label className='flex-1 flex flex-col items-center bg-green-50 dark:bg-green-800 rounded-lg p-4 cursor-pointer border border-green-200 dark:border-green-700 hover:border-green-400 transition'>
-                <FaUniversity className='text-3xl text-green-700 dark:text-green-100 mb-2' />
+                <FaUniversity className='text-3xl text-green-700 dark:text-white mb-2' />
                 <input
                   type='radio'
                   name='paymentMethod'
@@ -153,7 +189,7 @@ export default function CheckoutModal({
                   onChange={(e) => setPaymentMethod(e.target.value)}
                   className='mb-1 accent-green-600'
                 />
-                <span className='text-green-700 dark:text-green-100 text-sm'>
+                <span className='text-green-700 dark:text-white text-sm'>
                   Bank Transfer
                 </span>
               </label>
@@ -165,7 +201,7 @@ export default function CheckoutModal({
             )}
           </div>
           <div className='mt-6 border-t border-green-200 dark:border-green-800 pt-4'>
-            <h3 className='text-lg font-semibold text-green-800 dark:text-green-100 mb-2 text-right'>
+            <h3 className='text-lg font-semibold text-green-800 dark:text-white mb-2 text-right'>
               Total: KES {totalPrice.toFixed(2)}
             </h3>
             <button
@@ -176,7 +212,7 @@ export default function CheckoutModal({
             </button>
             <button
               type='button'
-              className='mt-3 w-full py-2 rounded-lg border border-green-300 dark:border-green-700 text-green-700 dark:text-green-100 bg-green-50 dark:bg-green-800 hover:bg-green-100 dark:hover:bg-green-900 transition font-semibold'
+              className='mt-3 w-full py-2 rounded-lg border border-green-300 dark:border-green-700 text-green-700 dark:text-white bg-green-50 dark:bg-green-800 hover:bg-green-100 dark:hover:bg-green-900 transition font-semibold'
               onClick={closeModal}
             >
               Cancel

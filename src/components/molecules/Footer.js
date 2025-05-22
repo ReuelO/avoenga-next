@@ -25,10 +25,10 @@ const socialMediaIcons = {
 
 export default function Footer() {
   return (
-    <footer className='bg-green-600 dark:bg-green-900 text-white shadow-inner pt-10 pb-4'>
+    <footer className='bg-green-600 dark:bg-green-900 text-green-200 dark:text-green-200 shadow-inner pt-10 pb-4'>
       <div className='max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8 px-4'>
         <div className='flex flex-col items-start gap-2 font-semibold'>
-          <span className='text-2xl font-bold text-green-100 mb-1'>
+          <span className='text-2xl font-bold text-white dark:text-green-300 mb-1'>
             Contact Us
           </span>
           <span>
@@ -36,7 +36,7 @@ export default function Footer() {
             <Link
               href={`mailto:${config.contact.email}`}
               size='medium'
-              className='underline hover:text-green-100 transition'
+              className='underline hover:text-white transition'
             >
               {config.contact.email}
             </Link>
@@ -46,7 +46,7 @@ export default function Footer() {
             <Link
               href={`tel:${config.contact.phone}`}
               size='medium'
-              className='underline hover:text-green-100 transition'
+              className='underline hover:text-white transition'
             >
               {config.contact.phone}
             </Link>
@@ -65,7 +65,7 @@ export default function Footer() {
           ))}
         </div>
       </div>
-      <div className='mt-8 border-t border-white/20 pt-4 text-center text-sm text-white/80'>
+      <div className='mt-8 border-t border-white/20 pt-4 text-center text-sm font-black text-white/80'>
         &copy; 2025 {config.siteName}. All rights reserved.
       </div>
     </footer>

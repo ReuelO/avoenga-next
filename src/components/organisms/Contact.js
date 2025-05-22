@@ -46,28 +46,28 @@ export default function Contact() {
       className='py-12 bg-green-100 dark:bg-green-800 text-center p-5'
     >
       <div className='max-w-6xl mx-auto py-12'>
-        <h1 className='text-lg font-bold text-green-700 dark:text-green-100 mb-4'>
+        <h1 className='text-lg font-bold text-green-700 dark:text-white mb-4'>
           Reach Out
         </h1>
-        <h2 className='text-3xl sm:text-4xl font-black text-green-700 dark:text-green-100 mb-6'>
+        <h2 className='text-3xl sm:text-4xl font-black text-green-700 dark:text-white mb-6'>
           Get In Touch
         </h2>
+        <p className='sm:text-lg font-semibold text-green-700 dark:text-white mb-8 mx-4'>
+          We value your feedback and inquiries. <br />
+          Please fill out the form below to contact us.
+        </p>
         <div className='max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch'>
           <form
             onSubmit={handleSubmit}
             className='bg-green-50 dark:bg-green-900 p-6 rounded-lg shadow-lg flex flex-col justify-center'
           >
-            <h3 className='text-2xl font-bold text-green-900 dark:text-green-100 mb-4'>
+            <h3 className='text-2xl font-bold text-green-700 dark:text-white mb-4'>
               Contact Form
             </h3>
-            <p className='text-lg font-semibold text-green-700 dark:text-green-200 mb-6'>
-              Have a question or feedback? <br />
-              Reach out and we&apos;ll get back to you!
-            </p>
             <div className='mb-4 text-left'>
               <label
                 htmlFor='name'
-                className='block text-green-900 dark:text-green-100 font-semibold mb-1'
+                className='block text-green-900 dark:text-white font-semibold mb-1'
               >
                 Name
               </label>
@@ -77,17 +77,17 @@ export default function Contact() {
                 type='text'
                 value={fields.name}
                 onChange={handleChange}
-                className='w-full p-2 border border-gray-300 dark:border-green-700 rounded bg-white dark:bg-green-800 text-green-900 dark:text-green-100 focus:outline-none focus:ring-2 focus:ring-green-400'
+                className='w-full p-2 border border-gray-300 dark:border-green-700 rounded bg-white dark:bg-green-800 text-green-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-green-400'
                 autoComplete='name'
               />
               {errors.name && (
-                <p className='text-red-500 text-xs mt-1'>{errors.name}</p>
+                <p className='text-green-500 text-xs mt-1'>{errors.name}</p>
               )}
             </div>
             <div className='mb-4 text-left'>
               <label
                 htmlFor='email'
-                className='block text-green-900 dark:text-green-100 font-semibold mb-1'
+                className='block text-green-900 dark:text-white font-semibold mb-1'
               >
                 Email
               </label>
@@ -97,17 +97,17 @@ export default function Contact() {
                 type='email'
                 value={fields.email}
                 onChange={handleChange}
-                className='w-full p-2 border border-gray-300 dark:border-green-700 rounded bg-white dark:bg-green-800 text-green-900 dark:text-green-100 focus:outline-none focus:ring-2 focus:ring-green-400'
+                className='w-full p-2 border border-gray-300 dark:border-green-700 rounded bg-white dark:bg-green-800 text-green-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-green-400'
                 autoComplete='email'
               />
               {errors.email && (
-                <p className='text-red-500 text-xs mt-1'>{errors.email}</p>
+                <p className='text-green-500 text-xs mt-1'>{errors.email}</p>
               )}
             </div>
             <div className='mb-6 text-left'>
               <label
                 htmlFor='message'
-                className='block text-green-900 dark:text-green-100 font-semibold mb-1'
+                className='block text-green-900 dark:text-white font-semibold mb-1'
               >
                 Message
               </label>
@@ -117,15 +117,15 @@ export default function Contact() {
                 rows={4}
                 value={fields.message}
                 onChange={handleChange}
-                className='w-full p-2 border border-gray-300 dark:border-green-700 rounded bg-white dark:bg-green-800 text-green-900 dark:text-green-100 focus:outline-none focus:ring-2 focus:ring-green-400'
+                className='w-full p-2 border border-gray-300 dark:border-green-700 rounded bg-white dark:bg-green-800 text-green-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-green-400'
               />
               {errors.message && (
-                <p className='text-red-500 text-xs mt-1'>{errors.message}</p>
+                <p className='text-green-500 text-xs mt-1'>{errors.message}</p>
               )}
             </div>
             <button
               type='submit'
-              className='w-full bg-green-600 dark:bg-green-700 text-white px-4 py-2 rounded hover:bg-green-700 dark:hover:bg-green-800 transition font-semibold'
+              className='w-full bg-green-600 dark:bg-green-700 text-white px-4 py-2 rounded hover:bg-green-700 dark:hover:bg-green-800 transition font-bold'
             >
               Send Message
             </button>
